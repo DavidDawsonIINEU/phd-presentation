@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interdisciplinary Design and Media PhD - Prospective Student Information Session</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            padding: 60px 80px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Logo in bottom left */
+        .logo-lockup {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            width: 400px;
+            z-index: 100;
+        }
+
+        /* CAMD Square in top right */
+        .camd-square {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            background: #000;
+            color: #fff;
+            display: flex;
+            flex-wrap: wrap;
+            font-weight: 900;
+            font-size: 24px;
+            padding: 8px;
+            z-index: 100;
+        }
+
+        .camd-square span {
+            width: 50%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Navigation */
+        .nav-hint {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            font-size: 14px;
+            opacity: 0.6;
+            z-index: 100;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 150px;
+            font-size: 14px;
+            opacity: 0.6;
+            z-index: 100;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Slide 1 - Title */
+        .slide-1 {
+            background: linear-gradient(rgba(72, 61, 139, 0.85), rgba(72, 61, 139, 0.85)), url('images/walking-group.jpg');
+            background-size: cover;
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide-1 h1 {
+            font-size: 84px;
+            margin-bottom: 20px;
+        }
+
+        .slide-1 .subtitle {
+            font-size: 36px;
+            font-weight: 300;
+        }
+
+        /* Slide 2 - Welcome */
+        .slide-2 {
+            background: #483d8b;
+        }
+
+        .team-container {
+            display: flex;
+            gap: 80px;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 60px;
+            flex: 1;
+        }
+
+        .team-member {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            max-width: 400px;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+            border: 5px solid #fff;
+        }
+
+        .team-member h3 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .team-member .title {
+            font-size: 18px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .bio {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .bio.active {
+            display: block;
+        }
+
+        /* Slide 3 - Program Overview */
+        .slide-3 {
+            background: #5f55a9;
+        }
+
+        .hero-statement {
+            font-size: 42px;
+            line-height: 1.5;
+            max-width: 1100px;
+            margin: 60px auto;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .research-image {
+            position: absolute;
+            bottom: 120px;
+            right: 80px;
+            width: 500px;
+            height: 300px;
+            object-fit: cover;
+            border: 5px solid #fff;
+        }
+
+        /* Slide 4 - Centers */
+        .slide-4 {
+            background: #8a7fde;
+        }
+
+        .centers-grid {
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 60px;
+        }
+
+        .center {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            max-width: 350px;
+        }
+
+        .center:hover {
+            transform: scale(1.05);
+        }
+
+        .center-logo {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+            margin-bottom: 30px;
+        }
+
+        .center-description {
+            margin-top: 20px;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .center-description.active {
+            display: block;
+        }
+
+        /* Slide 5 - Recent Graduates */
+        .slide-5 {
+            background: #adaee8;
+        }
+
+        .graduates-container {
+            display: flex;
+            gap: 100px;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 60px;
+        }
+
+        .graduate {
+            text-align: center;
+            max-width: 450px;
+        }
+
+        .graduate-photo {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+            border: 5px solid #fff;
+        }
+
+        .graduate h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .dissertation-title {
+            font-size: 20px;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        /* Slide 6 - Program Progression Table */
+        .slide-6 {
+            background: #5f55a9;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 60px;
+            border-collapse: collapse;
+            font-size: 20px;
+        }
+
+        thead {
+            background: #00aaa1;
+        }
+
+        th {
+            padding: 25px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 28px;
+        }
+
+        td {
+            padding: 30px 25px;
+            background: #446cb3;
+            border-bottom: 3px solid #5f55a9;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Slide 7 - Milestones Timeline */
+        .slide-7 {
+            background: #483d8b;
+        }
+
+        .timeline {
+            margin-top: 60px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .milestone {
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .milestone:hover .milestone-header {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .milestone-header {
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 6px solid #fab041;
+            font-size: 24px;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+
+        .milestone-detail {
+            padding: 20px 30px 20px 42px;
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .milestone-detail.active {
+            display: block;
+        }
+
+        /* Slide 8 - Funding Table */
+        .slide-8 {
+            background: #5f55a9;
+        }
+
+        .funding-header {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Slide 9 - Opportunities */
+        .slide-9 {
+            background: #8a7fde;
+        }
+
+        .opportunities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .opportunity-category {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .opportunity-category h3 {
+            color: #fab041;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .opportunity-category ul {
+            list-style: none;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .opportunity-category li:before {
+            content: "→ ";
+            color: #fab041;
+            font-weight: 700;
+        }
+
+        /* Slide 10 - FAQ */
+        .slide-10 {
+            background: #483d8b;
+        }
+
+        .faq-container {
+            margin-top: 40px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 6px solid #dd56b2;
+            font-size: 24px;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+
+        .faq-item:hover .faq-question {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .faq-answer {
+            padding: 20px 30px 20px 42px;
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 19px;
+            line-height: 1.7;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .faq-answer strong {
+            color: #fab041;
+        }
+
+        /* Slide 11 - Timeline */
+        .slide-11 {
+            background: #5f55a9;
+        }
+
+        .recruitment-timeline {
+            margin-top: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+
+        .timeline-date {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fab041;
+            min-width: 200px;
+            padding-right: 30px;
+        }
+
+        .timeline-event {
+            font-size: 20px;
+            line-height: 1.5;
+            padding-left: 30px;
+            border-left: 4px solid #fab041;
+        }
+
+        .stats-box {
+            margin-top: 60px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 28px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-box strong {
+            color: #fab041;
+        }
+
+        /* Slide 12 - Thank You */
+        .slide-12 {
+            background: #483d8b;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .thank-you-content h1 {
+            font-size: 96px;
+            margin-bottom: 60px;
+        }
+
+        .waiver-code {
+            background: #fab041;
+            color: #000;
+            padding: 30px 50px;
+            border-radius: 8px;
+            margin: 40px 0;
+            display: inline-block;
+        }
+
+        .waiver-code .label {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .waiver-code .code {
+            font-size: 48px;
+            font-weight: 900;
+            font-family: 'Courier New', monospace;
+        }
+
+        .deadline {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 40px 0;
+            color: #ed6062;
+        }
+
+        .contact {
+            font-size: 18px;
+            opacity: 0.8;
+            margin-top: 60px;
+        }
+
+        /* Accessibility */
+        button:focus, .team-member:focus, .center:focus, .milestone:focus, .faq-item:focus {
+            outline: 3px solid #fab041;
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Title -->
+        <div class="slide slide-1 active" data-slide="1">
+            <h1>Interdisciplinary Design<br>and Media PhD</h1>
+            <p class="subtitle">Prospective Student Information Session</p>
+            <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
+        </div>
+
+        <!-- Slide 2: Welcome -->
+        <div class="slide slide-2" data-slide="2">
+            <div class="camd-square">
+                <span>C A</span>
+                <span>M D</span>
+            </div>
+            <h2>Welcome</h2>
+            <div class="team-container">
+                <div class="team-member" tabindex="0" onclick="toggleBio('casper')">
+                    <img src="images/casper.jpg" alt="Professor Casper Harteveld" class="team-photo">
+                    <h3>Professor Casper Harteveld</h3>
+                    <p class="title">Associate Dean, Graduate Programs<br>Director, PhD Program<br>Ghost Lab</p>
+                    <div class="bio" id="casper-bio">
+                        Professor of Game Design and PhD Program Director, researching games for decision-making and societal impact across multiple disciplines.
+                    </div>
+                </div>
+                <div class="team-member" tabindex="0" onclick="toggleBio('david')">
+                    <img src="images/david.jpg" alt="David Dawson II" class="team-photo">
+                    <h3>David Dawson II</h3>
+                    <p class="title">Associate Director, PhD Programs</p>
+                    <div class="bio" id="david-bio">
+                        Associate Director for PhD programs, supporting doctoral students as early career colleagues navigating their professional development.
+                    </div>
+                </div>
+            </div>
+            <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
+        </div>
+
+        <!-- Slide 3: Program Overview -->
+        <div class="slide slide-3" data-slide="3">
+            <div class="camd-square">
+                <span>C A</span>
+                <span>M D</span>
+            </div>
+            <h2>Program Overview</h2>
+            <div class="hero-statement">
+                The PhD is designed for entrepreneurial self-starters who seek to break ground and invent new fields through hybrid and integrated approaches to knowledge creation.
+            </div>
+            <img src="images/research-presentation.jpg" alt="Student presenting research" class="research-image">
+            <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
+        </div>
+
+        <!-- Slide 4: Centers for Interdisciplinary Research -->
+        <div class="slide slide-4" data-slide="4">
+            <div class="camd-square">
+                <span>C A</span>
+                <span>M D</span>
+            </div>
+            <h2>Centers for Interdisciplinary Research</h2>
+            <div class="centers-grid">
+                <div class="center" tabindex="0" onclick="toggleCenter('arts')">
+                    <img src="images/center-arts.png" alt="Center for the Arts" class="center-logo">
+                    <div class="center-description" id="arts-description">
+                        Learning laboratory for interdisciplinary exhibitions and creative research
+                    </div>
+                </div>
+                <div class="center" tabindex="0" onclick="toggleCenter('design')">
+                    <img src="images/center-design.png" alt="Center for Design" class="center-logo">
+                    <div class="center-description" id="design-description">
+                        Collaborative space for addressing grand challenges through design thinking
+                    </div>
+                </div>
+                <div class="center" tabindex="0" onclick="toggleCenter('transformative')">
+                    <img src="images/center-transformative-media.png" alt="Center for Transformative Media" class="center-logo">
+                    <div class="center-description" id="transformative-description">
+                        Community-engaged research challenging inequalities through emerging media
+                    </div>
+                </div>
+            </div>
+            <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
+        </div>
+
+        <!-- Slide 5: Recent Graduates -->
+        <div class="slide slide-5" data-slide="5">
+            <div class="camd-square">
+                <span>C A</span>
+                <span>M D</span>
+            </div>
+            <h2>Recent Graduates - Dissertations</h2>
+            <div class="graduates-container">
+                <div class="graduate">
+                    <img src="images/jules.jpg" alt="Jules Rochielle Sievert" class="graduate-photo">
+                    <h3>Jules Rochielle Sievert</h3>
+                    <p class="dissertation-title">Transformative Transdisciplinary Legal Design</p>
+                </div>
+                <div class="graduate">
+                    <img src="images/skye.jpg" alt="Skye Moret" class="graduate-photo">
+                    <h3>Skye Moret</h3>
+                    <p class="dissertation-title">Constructing a continent: the Antarctic experience in context</p>
+                </div>
+            </div>
+            <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
+        </div>
+
+        <!-- Slide 6: Program Progression -->
+        <div class="slide slide-6" data-slide="6">
+            <div class="camd-square">
+                <span>C A</span>
+                <span>M D</span>
+            </div>
+            <h2>Program Progression</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Track</th>
+                        <th>Credit Requirement</th>
+                        <th>Funding Source</th>
+                        <th>Deadline</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Regular</strong></td>
+                        <td>48 SH</td>
+                        <td>2 years faculty RA<br>3 years college TA</td>
+                        <td>n/a</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Advanced</strong></td>
+                        <td>28 SH</td>
+                        <td>2 years faculty RA<br>3 years college TA</td>
+                        <td>April 1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Experiential</strong></td>
+                        <td>48 or 28 SH<br>Eligible for Advanced</td>
+                        <td>Covered by employer or<br>external organization</td>
+                        <td>April 1<br>(Advanced)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
+        </div>
+
+        <!-- Slide 7: PhD Milestones -->
+        <div class="slide slide-7" data-slide="7">
+            <div class="camd-square">
+                <span>C A</span>
+                <span>M D</span>
+            </div>
+            <h2>PhD Milestones</h2>
+            <div class="timeline">
+                <div class="milestone" tabindex="0" onclick="toggleMilestone('qualifying')">
+                    <div class="milestone-header">Qualifying Exam</div>
+                    <div class="milestone-detail" id="qualifying-detail">
+                        Written literature review + oral exam testing expertise in your research fields
+                    </div>
+                </div>
+                <div class="milestone" tabindex="0" onclick="toggleMilestone('proposal')">
+                    <div class="milestone-header">Proposal Defense</div>
+                    <div class="milestone-detail" id="proposal-detail">
+                        Present detailed research plan to CAMD community; last step before candidacy
+                    </div>
+                </div>
+                <div class="milestone" tabindex="0" onclick="toggleMilestone('candidacy')">
+                    <div class="milestone-header">PhD Candidacy</div>
+                    <div class="milestone-detail" id="candidacy-detail">
+                        Achieved after completing coursework, passing qualifying exam, and defending proposal
+                    </div>
+                </div>
+                <div class="milestone" tabindex="0" onclick="toggleMilestone('dissertation')">
+                    <div class="milestone-header">Dissertation Defense</div>
+                    <div class="milestone-detail" id="dissertation-detail">
+                        Final defense open to Northeastern community; can include exhibitions, performances, artifacts
+                    </div>
+                </div>
+            </div>
+            <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
+        </div>
+
+        <!-- Slide 8: Funding -->
+        <div class="slide slide-8" data-slide="8">
+            <div class="camd-square">
+                <span>C A</span>
+                <span>M D</span>
+            </div>
+            <h2>Funding</h2>
+            <div class="funding-header">
+                <strong>5 years guaranteed funding</strong> | 20 hours/week average
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Assistantship Type</th>
+                        <th>Expectations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1-2</strong></td>
+                        <td>Research Assistantship</td>
+                        <td>Support faculty research and learn how to develop as an individual researcher</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3-5</strong></td>
+                        <td>Teaching Assistantship</td>
+                        <td>Learn how teaching works at Northeastern and how to communicate expertise to others</td>
+                    </tr>
+                </tbody>
+            </table>
+            <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
+        </div>
+
+        <!-- Slide 9: Opportunities and Support -->
+        <div class="slide slide-9" data-slide="9">
+            <div class="camd-square">
+                <span>C A</span>
+                <span>M D</span>
+            </div>
+            <h2>Opportunities and Support</h2>
+            <div class="opportunities-grid">
+                <div class="opportunity-category">
+                    <h3>Professional Development</h3>
+                    <ul>
+                        <li>$1,000 annually for conferences, workshops, and professional associations</li>
+                        <li>Up to $500 matching travel funds for research presentations</li>
+                        <li>University-issued computer</li>
+                    </ul>
+                </div>
+                <div class="opportunity-category">
+                    <h3>Research Support</h3>
+                    <ul>
+                        <li>LEADERs Program: Industry and professional experience through embedded research partnerships</li>
+                        <li>Media Studios Organization: Equipment for VR/AR, physical making, games library, recording/photography</li>
+                    </ul>
+                </div>
+                <div class="opportunity-category">
+                    <h3>Fellowship Opportunities</h3>
+                    <ul>
+                        <li>Searchable database of internal and external funding through PhD Network</li>
+                    </ul>
+                </div>
+                <div class="opportunity-category">
+                    <h3>International Student Support</h3>
+                    <ul>
+                        <li>Immigration and visa support</li>
+                        <li>Academic skills advising</li>
+                        <li>Global Student Mentor Program</li>
+                        <li>Legal resources</li>
+                    </ul>
+                </div>
+            </div>
+            <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
+        </div>
+
+        <!-- Slide 10: FAQ -->
+        <div class="slide slide-10" data-slide="10">
+            <div class="camd-square">
+                <span>C A</span>
+                <span>M D</span>
+            </div>
+            <h2>Commonly Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item" tabindex="0" onclick="toggleFAQ('faculty')">
+                    <div class="faq-question">Should I reach out to faculty?</div>
+                    <div class="faq-answer" id="faculty-answer">
+                        <strong>Yes!</strong> Contact faculty before applying. A list of recruiting faculty is available on the program website.
+                    </div>
+                </div>
+                <div class="faq-item" tabindex="0" onclick="toggleFAQ('letters')">
+                    <div class="faq-question">What's expected for letters of recommendation?</div>
+                    <div class="faq-answer" id="letters-answer">
+                        <strong>Three letters required.</strong> References submit directly through the online portal using their email addresses.
+                    </div>
+                </div>
+                <div class="faq-item" tabindex="0" onclick="toggleFAQ('english')">
+                    <div class="faq-question">How can I waive the English proficiency requirement?</div>
+                    <div class="faq-answer" id="english-answer">
+                        Submit documentation of a <strong>bachelor's or master's degree from an institution where English is the only language of instruction.</strong>
+                    </div>
+                </div>
+                <div class="faq-item" tabindex="0" onclick="toggleFAQ('portfolio')">
+                    <div class="faq-question">What should I put in my portfolio?</div>
+                    <div class="faq-answer" id="portfolio-answer">
+                        <strong>Minimum 3 work samples (5+ recommended).</strong> Include publications, writing samples, portfolio pieces, or reels.
+                    </div>
+                </div>
+            </div>
+            <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
+        </div>
+
+        <!-- Slide 11: Recruitment Timeline -->
+        <div class="slide slide-11" data-slide="11">
+            <div class="camd-square">
+                <span>C A</span>
+                <span>M D</span>
+            </div>
+            <h2>Recruitment Process</h2>
+            <div class="recruitment-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">December 1</div>
+                    <div class="timeline-event">Application deadline (no late materials accepted, including letters)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">December</div>
+                    <div class="timeline-event">Faculty review applications</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">January</div>
+                    <div class="timeline-event">Shortlist confirmed, invitations to Virtual Meet & Greet sent</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">February 5</div>
+                    <div class="timeline-event">Virtual Meet & Greet</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Early March</div>
+                    <div class="timeline-event">Admissions decisions sent</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">April 15</div>
+                    <div class="timeline-event">Acceptance confirmation deadline</div>
+                </div>
+            </div>
+            <div class="stats-box">
+                <strong>Last Year:</strong> ~180 applications, 17 accepted
+            </div>
+            <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
+        </div>
+
+        <!-- Slide 12: Thank You -->
+        <div class="slide slide-12" data-slide="12">
+            <div class="camd-square">
+                <span>C A</span>
+                <span>M D</span>
+            </div>
+            <div class="thank-you-content">
+                <h1>Thank You!</h1>
+                <div class="waiver-code">
+                    <div class="label">Application Fee Waiver Code</div>
+                    <div class="code">CAMDApp2026</div>
+                </div>
+                <div class="deadline">All materials must be submitted by December 1</div>
+                <h2>Questions?</h2>
+                <div class="contact">d.dawson@northeastern.edu</div>
+            </div>
+            <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
+        </div>
+
+        <!-- Navigation hints -->
+        <div class="nav-hint">← → or click to navigate</div>
+        <div class="slide-number"><span id="current-slide">1</span> / 12</div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 12;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(s => s.classList.remove('active'));
+            
+            if (n > totalSlides) currentSlide = totalSlides;
+            if (n < 1) currentSlide = 1;
+            else currentSlide = n;
+            
+            document.querySelector(`[data-slide="${currentSlide}"]`).classList.add('active');
+            document.getElementById('current-slide').textContent = currentSlide;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+
+        // Click to advance
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.team-member, .center, .milestone, .faq-item')) {
+                nextSlide();
+            }
+        });
+
+        // Toggle functions for interactive elements
+        function toggleBio(person) {
+            event.stopPropagation();
+            const bio = document.getElementById(`${person}-bio`);
+            bio.classList.toggle('active');
+        }
+
+        function toggleCenter(center) {
+            event.stopPropagation();
+            const desc = document.getElementById(`${center}-description`);
+            desc.classList.toggle('active');
+        }
+
+        function toggleMilestone(milestone) {
+            event.stopPropagation();
+            const detail = document.getElementById(`${milestone}-detail`);
+            detail.classList.toggle('active');
+        }
+
+        function toggleFAQ(faq) {
+            event.stopPropagation();
+            const answer = document.getElementById(`${faq}-answer`);
+            answer.classList.toggle('active');
+        }
+
+        // Keyboard interaction for interactive elements
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.target.classList.contains('team-member')) {
+                e.target.click();
+            }
+            if (e.key === 'Enter' && e.target.classList.contains('center')) {
+                e.target.click();
+            }
+            if (e.key === 'Enter' && e.target.classList.contains('milestone')) {
+                e.target.click();
+            }
+            if (e.key === 'Enter' && e.target.classList.contains('faq-item')) {
+                e.target.click();
+            }
+        });
+    </script>
+</body>
+</html>
