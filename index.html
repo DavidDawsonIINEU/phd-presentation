@@ -76,25 +76,6 @@
             object-fit: contain;
         }
 
-        /* Navigation */
-        .nav-hint {
-            position: absolute;
-            bottom: 2vh;
-            right: 2vw;
-            font-size: 0.875rem;
-            opacity: 0.6;
-            z-index: 100;
-        }
-
-        .slide-number {
-            position: absolute;
-            bottom: 2vh;
-            right: 15vw;
-            font-size: 0.875rem;
-            opacity: 0.6;
-            z-index: 100;
-        }
-
         /* Typography */
         h1 {
             font-family: 'Playfair Display', serif;
@@ -206,26 +187,26 @@
         .hero-statement {
             font-size: 2.625rem;
             line-height: 1.5;
-            max-width: 70vw;
-            margin: 4vh auto;
-            text-align: center;
+            max-width: 55vw;
+            margin: 4vh auto 4vh 5vw;
+            text-align: left;
             flex: 1;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
-        .research-image {
+       .research-image {
             position: absolute;
-            bottom: 12vh;
             right: 5vw;
-            width: 31.25vw;
-            height: 18.75vh;
-            max-width: 500px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35vw;
+            height: auto;
+            max-width: 600px;
             object-fit: cover;
             border: 0.3125rem solid #fff;
         }
-
         /* Slide 4 - Centers */
         .slide-4 {
             background: #8a7fde;
@@ -935,9 +916,7 @@
             <img src="images/logo-lockup.png" alt="Northeastern University College of Arts, Media and Design" class="logo-lockup">
         </div>
 
-        <!-- Navigation hints -->
-        <div class="nav-hint">← → or click to navigate</div>
-        <div class="slide-number"><span id="current-slide">1</span> / 12</div>
+
     </div>
 
     <script>
